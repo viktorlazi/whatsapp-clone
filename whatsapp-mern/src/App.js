@@ -6,9 +6,10 @@ import DonutLargeIcon from '@material-ui/icons/DonutLarge';
 function App() {
   return (
     <div className="app">
-      <Sidebar />
-      <DonutLargeIcon/>
-      <Chat />    
+      <div className="app__body">
+        <Sidebar />
+        <Chat />   
+      </div>
     </div>
   );
 }
