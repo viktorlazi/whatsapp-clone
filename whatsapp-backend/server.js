@@ -4,6 +4,7 @@ import mongoose from 'mongoose'
 import Messages from './dbMessages.js'
 import dbPassword from './dbPassword.js'
 import Pusher from 'pusher'
+import cors from 'cors'
 
 // app config
 const app = express()
@@ -19,6 +20,7 @@ const pusher = new Pusher({
 
 // middleware
 app.use(express.json())
+app.use(cors())
 
 // DB config
 const connection_url = 'mongodb+srv://admin:'+dbPassword+'@cluster0.lkgyy.mongodb.net/whatsappdb?retryWrites=true&w=majority'
@@ -45,7 +47,8 @@ db.once('open', ()=>{
       pusher.trigger('messages', 'inserted',
       {
         name:messageDetails.name,
-        message:messageDetails.message
+        message:messageDetails.message,
+        timestamp:messageDetails.timestamp
       })
       console.log('pusher - moze')
     }else{
