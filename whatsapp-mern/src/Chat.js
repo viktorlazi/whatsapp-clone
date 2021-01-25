@@ -31,11 +31,11 @@ const Chat = ({messages}) => {
             <div className="chat__body">
               {
               messages.map((message)=>(
-                <p className={'chat__message'}>
+                <p className={`chat__message ${message.received || 'chat__receiver'}`}>
                   <span className="chat__name">
-                      {message.name} g
+                      {message.name} 
                   </span>
-                  {message.message} g
+                  {message.message} 
                   <span className="chat__timestamp">
                     {
                       message.timestamp

@@ -6,7 +6,7 @@ import React, {useEffect, useState} from 'react'
 import axios from './axios'
 
 function App() {
-  const [messages, setMessages] = useState()
+  const [messages, setMessages] = useState([])
 
   useEffect(() => {
     axios.get('/messages/sync')
@@ -15,6 +15,7 @@ function App() {
       console.log(response.data)
     })
   }, [])
+
   useEffect(() => {
     const pusher = new Pusher('18498135bf65421bad6d', {
       cluster: 'eu'
