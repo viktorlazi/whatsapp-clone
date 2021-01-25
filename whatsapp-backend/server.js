@@ -2,6 +2,7 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import Messages from './dbMessages.js'
+import dbPassword from './dbPassword.js'
 
 // app config
 const app = express()
@@ -11,7 +12,10 @@ const port = process.env.PORT || 9000
 app.use(express.json())
 
 // DB config
-const connection_url = 'mongodb+srv://admin:RU8TuxX4s8CS63xF@cluster0.lkgyy.mongodb.net/whatsappdb?retryWrites=true&w=majority'
+const connection_url = 'mongodb+srv://admin:'+dbPassword+'@cluster0.lkgyy.mongodb.net/whatsappdb?retryWrites=true&w=majority'
+
+console.log(connection_url);
+
 mongoose.connect(connection_url, {
   useCreateIndex: true,
   useNewUrlParser:true,
