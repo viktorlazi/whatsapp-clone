@@ -7,7 +7,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon'
 import MicIcon from '@material-ui/icons/Mic'
 
-const Chat = () => {
+const Chat = ({messages}) => {
     return (
         <div className="chat">
             <div className="chat__header">
@@ -29,39 +29,21 @@ const Chat = () => {
                 </div>
             </div>
             <div className="chat__body">
-                <p className="chat__message">
+              {
+              messages.map((message)=>(
+                <p className={'chat__message'}>
                   <span className="chat__name">
-                      Viktor
+                      {message.name} g
                   </span>
-                  This is a message
+                  {message.message} g
                   <span className="chat__timestamp">
                     {
-                      new Date().toUTCString()
+                      message.timestamp
                     }
                   </span>
                 </p>
-                <p className="chat__message">
-                  <span className="chat__name">
-                      Viktor
-                  </span>
-                  This is a message
-                  <span className="chat__timestamp">
-                    {
-                      new Date().toUTCString()
-                    }
-                  </span>
-                </p>
-                <p className="chat__message chat__reciever">
-                  <span className="chat__name">
-                      Viktor
-                  </span>
-                  This is a message
-                  <span className="chat__timestamp">
-                    {
-                      new Date().toUTCString()
-                    }
-                  </span>
-                </p>
+              ))}              
+
             </div>
             <div className="chat__footer">
               <InsertEmoticonIcon />
